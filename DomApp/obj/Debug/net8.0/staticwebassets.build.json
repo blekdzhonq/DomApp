@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "br+/m+MssHxIFHV3OEfdpzWSQr8asqSIEdp8UAGMuX4=",
+  "Source": "DomApp",
+  "BasePath": "_content/DomApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
