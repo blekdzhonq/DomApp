@@ -3,6 +3,7 @@ using System;
 using DomApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DomApp.Migrations
 {
     [DbContext(typeof(DomAppContext))]
-    partial class DomAppContextModelSnapshot : ModelSnapshot
+    [Migration("20240524114113_MasterInstrument")]
+    partial class MasterInstrument
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,13 +175,13 @@ namespace DomApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a1912ad3-d1dd-4397-b1e7-43fe216d0d85",
+                            Id = "4b01de8f-abb0-405e-b9e1-c047890b3373",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "2a5971e7-0ee5-40e0-837c-1385e50a0478",
+                            Id = "395d378c-896d-45ab-8913-08638b417cb0",
                             Name = "User",
                             NormalizedName = "USER"
                         });

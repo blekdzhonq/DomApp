@@ -4,22 +4,19 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DomApp.Models
+namespace DomApp.Models.DTOs
 {
-    public class Instrument
+    public class CreateMasterInstrumentDto
     {
-        public string? Id { get; set; }
-
         [Required]
         public string? Name { get; set; }
 
         [Required]
-        public string? Expiration { get; set; }
-
-        [Required]
         public decimal TickSize { get; set; }
 
-        public User? user { get; set; }
-        public string? UserId { get; set; }
+        [Required]
+        public decimal PointValue { get; set; }
+        [Required]
+        public string? Url { get; set; }
     }
 }

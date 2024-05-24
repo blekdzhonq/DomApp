@@ -1,14 +1,15 @@
+
 using DomApp.Data;
-using DomApp.Models;
+using DomApp.Interfaces;
+using DomApp.MappingProfiles;
+using DomApp.Models.DomainModels;
+using DomApp.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
 
 builder.Services.AddCors(options =>
 {
@@ -23,6 +24,9 @@ builder.Services.AddCors(options =>
 
 });
 
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+builder.Services.AddSingleton<ICsvService, CsvMasterInstrumentService>();
 
 builder.Services.AddDbContext<DomAppContext>(options =>
 {
@@ -38,8 +42,6 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
     options.Password.RequiredLength = 12;
 })
 .AddEntityFrameworkStores<DomAppContext>();
-
-
 
 var app = builder.Build();
 

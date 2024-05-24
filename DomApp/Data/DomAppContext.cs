@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DomApp.Models;
+using AutoMapper;
+using DomApp.Interfaces;
+using DomApp.Models.DomainModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,13 +14,19 @@ namespace DomApp.Data
     public class DomAppContext : IdentityDbContext<User>
     {
 
-        public DomAppContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
-        {
+        private readonly ICsvService _csvService;
+        private readonly IMapper _mapper;
 
+        public DomAppContext(DbContextOptions dbContextOptions, ICsvService csvService, IMapper mapper) : base(dbContextOptions)
+        {
+            _csvService = csvService;
+            _mapper = mapper;
         }
 
-        public DbSet<User> Users { get; set; }
+        public new DbSet<User> Users { get; set; }
         public DbSet<Instrument> Instruments { get; set; }
+        public DbSet<MasterInstrument> MasterInstruments { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -41,11 +49,15 @@ namespace DomApp.Data
 
             builder.Entity<IdentityRole>().HasData(roles);
 
-
             builder.Entity<Instrument>()
-            .HasOne<User>(i => i.user)
-            .WithMany(i => i.FavoriteInstruments)
-            .HasForeignKey(i => i.UserId);
+            .HasOne<User>(inst => inst.user)
+            .WithMany(user => user.FavoriteInstruments)
+            .HasForeignKey(inst => inst.UserId);
+
+            var instrumentsDtos = _csvService.ReadInstrumentsFromCsv("Files/AllInstruments.csv");
+            var instruments = _mapper.Map<IEnumerable<MasterInstrument>>(instrumentsDtos);
+            builder.Entity<MasterInstrument>().HasData(instrumentsDtos);
+
 
 
         }

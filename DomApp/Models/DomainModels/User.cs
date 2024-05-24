@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace DomApp.Models
+namespace DomApp.Models.DomainModels
 {
     public class User : IdentityUser
     {

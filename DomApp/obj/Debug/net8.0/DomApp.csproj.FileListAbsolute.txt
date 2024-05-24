@@ -103,3 +103,6 @@ E:\TradeDomProject\DomApp\obj\Debug\net8.0\refint\DomApp.dll
 E:\TradeDomProject\DomApp\obj\Debug\net8.0\DomApp.pdb
 E:\TradeDomProject\DomApp\obj\Debug\net8.0\DomApp.genruntimeconfig.cache
 E:\TradeDomProject\DomApp\obj\Debug\net8.0\ref\DomApp.dll
+E:\TradeDomProject\DomApp\bin\Debug\net8.0\AutoMapper.dll
+E:\TradeDomProject\DomApp\bin\Debug\net8.0\CsvHelper.dll
+E:\TradeDomProject\DomApp\obj\Debug\net8.0\DomApp.sourcelink.json
